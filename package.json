@@ -2,12 +2,10 @@
   "name": "backendpractice01",
   "version": "1.0.0",
   "description": "A Backend Practice",
-  
   "keywords": [
     "js",
     "backend"
   ],
-  
   "license": "ISC",
   "author": "Bishwadip",
   "type": "module",
@@ -18,7 +16,8 @@
   },
   "dependencies": {
     "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.3"
   }
-  
-  
 }
