@@ -85,5 +85,23 @@ userSchema.methods.comparePassword = async function(candidatePassword) {
     return await bcrypt.compare(candidatePassword, this.password);
 };
 
+userSchema.methods.generateAccessToken = function() {
+
+    const jwt = import("jsonwebtoken");
+    const token = jwt.sign({  userId: this._id ,
+                              email: this.email,
+                              username: this.username,
+                             fullname: this.fullname}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_EXPIRY });
+    return token;
+}; 
+
+userSchema.methods.generateRefreshToken = function() {  
+    const jwt = import("jsonwebtoken");
+    const token = jwt.sign({ userId: this._id 
+                             
+
+    }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: process.env.REFRESH_TOKEN_EXPIRY });
+    return token;
+};
 
 const User = mongoose.model('User', userSchema);
